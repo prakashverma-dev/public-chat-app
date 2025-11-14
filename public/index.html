@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Chat</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Username entry page, index.html -->
+
+    <div class="container">
+        <h2>Welcome to Public Chat</h2>
+        <input type="text" id="username" placeholder="Enter your name" autocomplete="off" />
+        <button onclick="enterChat()">Join Chat</button>
+    </div>
+
+
+    <!-- Script for Username entry page -->
+    <script>
+        
+        function enterChat() {
+
+          const name = document.getElementById("username").value.trim();
+          if (name) {
+            localStorage.setItem("chat_username", name);
+            window.location.href = "chat.html";
+          } else {
+            alert("Please enter your name!");
+          }
+
+        }
+
+
+    </script>
+    
+</body>
+</html>
