@@ -12,6 +12,7 @@
 
     <div class="container">
         <h2>Welcome to Public Chat</h2>
+        
         <input type="text" id="username" placeholder="Enter your name" autocomplete="off" />
         <button onclick="enterChat()">Join Chat</button>
     </div>
@@ -19,6 +20,14 @@
 
     <!-- Script for Username entry page -->
     <script>
+
+      // Check if username already exists
+        const savedUser = localStorage.getItem("chat_username");
+
+        if (savedUser) {
+          // alert("Welcome Back..👋");
+          window.location.href = "chat.html";   // directly send to chat
+        } 
         
         function enterChat() {
 

@@ -1,45 +1,98 @@
-html {
+/* html {
     scroll-behavior: smooth;
-  }
-  body {
+  } */
+
+
+  html, body {
     font-family: Arial, sans-serif;
     background-color: #1e1e2f;
     color: #fff;
+    margin: 0;
+    height: 100dvh;
+    overflow: hidden;  /* Important: prevent page from scrolling */
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    align-items: center; 
   }
+  
+.container,
+.chat-container {
+  background: #2a2a40;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 350px;
+  padding-bottom: 43px;
+}
+
+input {
+  padding: 10px;
+  width: 60%;
+  border-radius: 5px;
+  border: none;
+  margin-top: 10px;
+  outline: none;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background: #4e8cff;
+  color: white;
+  cursor: pointer;
+}
   
   /* Layout */
   .chat-layout {
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    
+    height: 100dvh;  
     display: flex;
+    flex-direction: row;
     background: #2a2a40;
-    border-radius: 10px;
+    border-radius: 0;
     overflow: hidden;
-    width: 700px;
-    height: 500px;
+  
+    /* FIXES MOBILE HEIGHT ISSUES */
+    height: 100dvh;       
+    /* width: 100%; */
+    max-width: 800px;
+  
+    /* position: fixed;
+    top: 0;
+    left: 50%; */
+    /* transform: translateX(-50%); */
   }
   
   /* Sidebar */
   .users-panel {
-    width: 200px;
+    width: 130px;
     background: #1b1b2b;
     border-right: 1px solid #444;
-    padding: 15px;
+    padding: 12px;
+    margin-top: 4.7rem;
+   
   }
   
-  .users-panel h3 {
-    margin-top: 0;
+  .users-panel h4 {
+    margin-top: 4px; 
     color: #4e8cff;
     text-align: center;
+    text-decoration: underline;
+    /* font-size: medium; */
   }
   
   #users-list {
     list-style: none;
     padding: 0;
-    margin: 10px 0;
+    /* margin: 8px 0; */
     height: 420px;
     overflow-y: auto;
   }
@@ -47,7 +100,7 @@ html {
   #users-list li {
     padding: 6px 8px;
     border-radius: 5px;
-    margin: 4px 0;
+    /* margin: 4px 0; */
     background: none;
     font-size: 0.95em;
     font-weight: 500;
@@ -59,7 +112,34 @@ html {
     display: flex;
     flex-direction: column;
     padding: 15px;
+  
   }
+
+  .chat-container h2{
+
+    margin-top: 3px; 
+    margin-bottom: 18px; 
+    /* text-align: center; */
+  }
+
+
+  .chat-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;    /* stays fixed inside layout */
+    top: 0;
+    z-index: 1000;
+
+    background: #2a2a40;   /* same color as container */
+    padding: 12px 10px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    border-bottom: 1px solid #444;
+  }
+  
   
   .chat-box {
     flex: 1;
@@ -67,30 +147,41 @@ html {
     border: 1px solid #444;
     margin: 10px 0;
     padding: 10px;
+    padding-top: 70px; 
     background: #1b1b2b;
     border-radius: 8px;
+    
   }
+
   
+ 
   /* Chat Input */
   .chat-input {
     display: flex;
     gap: 10px;
   }
-  
-  .chat-input input {
+
+
+  .chat-input textarea {
     flex: 1;
-    padding: 10px;
+    padding: 10px 12px;
     border-radius: 5px;
     border: none;
+    outline: none;
+    resize: none; 
+  overflow: hidden; 
+  min-height: 30px;
+  max-height: 120px; /* limit height */
   }
   
   .chat-input button {
-    padding: 10px 15px;
+    padding: 6px 16px;
     border: none;
     border-radius: 5px;
     background: #4e8cff;
     color: white;
     cursor: pointer;
+    
   }
   
   /* Messages */
@@ -101,7 +192,10 @@ html {
     align-items: flex-end;
     background: none;
     gap: 6px; /* Small spacing between text and time */
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
+    overflow-wrap: break-word;
+    text-align: start;
+    
   }
 
   .message .time {
@@ -131,10 +225,139 @@ html {
     margin-right: 5px;
     display: inline;
   }
+
+  .toggle-users-btn {
+    display: none;
+    background: #4e8cff;
+    color: white;
+    /* padding: 8px 12px; */
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+
+
+
+
+/* Close button inside sidebar */
+.close-users-btn {
+  display: none;
+  background: none;
+  color: white;
+  border: none;
+  font-size: 28px;
+  float: right;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* Overlay when sidebar is open */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.247);
+
+  z-index: 5;
+}
+
+/* Slide-in users panel */
+.users-panel {
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+/* MOBILE VIEW */
+@media (max-width: 600px) {
+
+  .toggle-users-btn {
+    display: block;
+    padding: 8px 7px;
+  }
+  .logout-btn{
+    padding: 8px 7px;
+  }
+
+  .container{
+    width: 325px;
+    /* height: 170px; */
+  }
+  .close-users-btn {
+    display: block;
+  }
+
+  .chat-header{
+    justify-content: space-around;
+  }
+
+
   
-  /* .time {
-    font-size: 0.8em;
-    color: #aaa;
-    margin-left: 10px;
-  } */
+  /* Hide sidebar with slide-out */
+  .users-panel {
+    position: fixed;
+    top: 5rem;
+    bottom: 5rem;
+    left: 0;
+    width: 160px;
+    /* height: 100%; */
+    background: #1b1b2b;
+    border-right: 1px solid #444;
+    padding: 15px;
+    transform: translateX(-250px);
+  }
+
+  /* Slide-in class */
+  .users-panel.active {
+    transform: translateX(0);
+  }
+
+  /* Overlay visible */
+  .overlay.active {
+    display: block;
+  }
+
+  .chat-header h2 {
+    margin-top:8px;
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Very Small Devices */
+/* @media (max-width: 400px) {
+  .chat-container h2 {
+    font-size: 1.1rem;
+  }
+
+  .users-panel h4 {
+    font-size: 0.95rem;
+  }
+} */
+
+/* Tablets */
+/* @media (max-width: 900px) {
+  .chat-layout {
+    width: 95%;
+    height: 520px;
+  }
+
+  .users-panel {
+    width: 110px;
+  }
+} */
   

@@ -28,20 +28,46 @@
     <div class="chat-layout">
       <!-- Sidebar for active users -->
       <div class="users-panel">
-        <h3>Users Online</h3>
+        <button class="close-users-btn" id="close-users-btn">x</button>
+        <h4>Users Online(<span id="online-count">0</span>)</h4>
         <ul id="users-list"></ul>
       </div>
 
       <!-- Main chat area -->
       <div class="chat-container">
-        <h2>Public Chat</h2>
+        
+        
+        <div class="chat-header">
+
+          <h2>Indian Chat Room</h2>
+          <button class="toggle-users-btn" id="toggle-users-btn">Online Users</button>
+
+     
+          <button id="logout-btn" class="logout-btn">Logout</button>
+        
+       </div>
         <div id="chat-box" class="chat-box"></div>
         <div class="chat-input">
-          <input id="message" type="text" placeholder="Type a message..." />
+          <textarea  id="message" placeholder="Type a message..."></textarea>
           <button id="send-btn">Send</button>
         </div>
       </div>
     </div>
+
+    <!-- <button id="logout-btn" style="
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    background: #ff3b3b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+">
+  Logout
+</button> -->
+
 
     <!-- <button onclick="createConnection()">Create WS Server Connection</button> -->
 
@@ -50,6 +76,38 @@
 
 
     <script src="./script-chat.js"></script>
+    <script>
+const usersPanel = document.querySelector(".users-panel");
+const toggleBtn = document.getElementById("toggle-users-btn");
+const closeBtn = document.getElementById("close-users-btn");
+
+// Create overlay once
+let overlay = document.querySelector(".overlay");
+if (!overlay) {
+  overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+  document.body.appendChild(overlay);
+}
+
+// Open sidebar
+toggleBtn.addEventListener("click", () => {
+  usersPanel.classList.add("active");
+  overlay.classList.add("active");
+});
+
+// Close sidebar (X button)
+closeBtn.addEventListener("click", () => {
+  usersPanel.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+// Close sidebar on overlay click
+overlay.addEventListener("click", () => {
+  usersPanel.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+    </script>
 
   </body>
 </html>

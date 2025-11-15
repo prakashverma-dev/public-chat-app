@@ -7,6 +7,15 @@ if (!username) {
 window.location.href = "index.html";
 }
 
+// Logout button
+const logoutBtn = document.getElementById("logout-btn");
+
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("chat_username");  // clear username
+  window.location.href = "index.html";       // send back to login page
+});
+
+
 // Map to store username-color pairs
 const userColors = {};
 
@@ -55,17 +64,32 @@ const chatBox = document.getElementById("chat-box");
 const usersList = document.getElementById("users-list");
 
 
+
 sendBtn.addEventListener("click", ()=>{
     // console.log(messageInput.value)
 
     if (messageInput.value) {
 
-    socket.emit('chat message', messageInput.value);
+    socket.emit('chat message', messageInput.value.trim());
     // appendMessage(`You: ${messageInput.value}`, "self");
     messageInput.value = "";
 
     }
 
+})
+
+messageInput.addEventListener("keydown", (e)=>{
+  if(e.key === "Enter"){
+    if (messageInput.value) {
+
+      socket.emit('chat message', messageInput.value.trim());
+      // appendMessage(`You: ${messageInput.value}`, "self");
+      messageInput.value = "";
+  
+      }
+    
+
+  }
 })
 
 // Show welcome message for yourself
@@ -84,7 +108,13 @@ socket.on("system", (data) => {
 
 // Handle user list updates
 socket.on("update-users", (users) => {
-    usersList.innerHTML = ""; // clear list
+
+    usersList.innerHTML = ""; 
+    
+    // Update online users count
+  const onlineCount = document.getElementById("online-count");
+  onlineCount.textContent = users.length;
+
     users.forEach((u) => {
       const li = document.createElement("li");
       li.textContent = u + (u === username ? " (You)" : "");
@@ -139,13 +169,13 @@ function formatTime() {
   } 
 
 
-// Optional: show reconnecting notice -
+// To show reconnecting notice -
   socket.io.on("reconnect_attempt", () => {
     appendMessage("Reconnecting...", "system");
   });
-  socket.io.on("reconnect", () => {
-    appendMessage("Connection restored", "system");
-  });
+  // socket.io.on("reconnect", () => {
+  //   appendMessage("Connection restored", "system");
+  // });
   socket.io.on("disconnect", () => {
     appendMessage("You are disconnected. Trying to reconnect...", "system");
   });

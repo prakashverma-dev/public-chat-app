@@ -1,0 +1,133 @@
+/* Layout */
+.chat-layout {
+    display: flex;
+    background: #2a2a40;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 800px;
+    height: 540px;
+  }
+  
+  /* Sidebar */
+  .users-panel {
+    width: 122px;
+    background: #1b1b2b;
+    border-right: 1px solid #444;
+    padding: 15px;
+  }
+  
+  .users-panel h4 {
+    margin-top: 4px; 
+    color: #4e8cff;
+    text-align: center;
+    /* font-size: medium; */
+  }
+  
+  #users-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0;
+    height: 420px;
+    overflow-y: auto;
+  }
+  
+  #users-list li {
+    padding: 6px 8px;
+    border-radius: 5px;
+    margin: 4px 0;
+    background: none;
+    font-size: 0.95em;
+    font-weight: 500;
+  }
+  
+  /* Chat Area */
+  .chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .chat-box {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #444;
+    margin: 10px 0;
+    padding: 10px;
+    background: #1b1b2b;
+    border-radius: 8px;
+  }
+  
+  /* Chat Input */
+  .chat-input {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .chat-input textarea {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    resize: none; /* User cannot manually resize */
+  overflow: hidden; /* Hide scroll */
+  min-height: 30px;
+  max-height: 120px; /* Optional: limit height */
+  }
+  
+  .chat-input button {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 5px;
+    background: #4e8cff;
+    color: white;
+    cursor: pointer;
+    
+  }
+  
+  /* Messages */
+  .message {
+    margin: 6px 0;
+    display: flex;
+    justify-content: flex-start; /* Align all content to start */
+    align-items: flex-end;
+    background: none;
+    gap: 6px; /* Small spacing between text and time */
+    flex-wrap: wrap;
+  }
+
+  .message .time {
+    margin-left: auto; /* Push time to the far right */
+    font-size: 0.8em;
+    color: #aaa;
+  }
+  
+  .message.self {
+    font-weight: 600;
+  }
+  
+  .message.system {
+    color: #a0a0a0;
+    text-align: center;
+    font-style: italic;
+    font-size: 0.9em;
+    justify-content: center;
+  }
+
+  .message span {
+    display: inline;
+  }
+  
+  .username {
+    font-weight: 600;
+    margin-right: 5px;
+    display: inline;
+  }
+  
+  /* .time {
+    font-size: 0.8em;
+    color: #aaa;
+    margin-left: 10px;
+  } */
+  
