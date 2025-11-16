@@ -3,6 +3,8 @@ const express = require("express")
 const http = require("http")
 const path = require("path")
 const {Server} = require("socket.io")
+const dotenv = require("dotenv")
+dotenv.config();
 
 const app = express()
 const server = http.createServer(app)
@@ -91,5 +93,15 @@ io.on("connection", (socket)=>{
 //  Note : Notice that I initialize a new instance of socket.io by passing the server (the HTTP server) object. Then I listen on the connection event for incoming sockets and log it to the console.
 
 
-const PORT = 3000;
+const PORT = process.env.PORT ||  3000;
 server.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
+
+
+/*
+
+> npm init -y
+> npm i express
+> npm i socket.io 
+
+
+*/
