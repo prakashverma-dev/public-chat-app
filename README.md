@@ -1,7 +1,7 @@
 <h1 align="center">🌐 Public Chat App</h1>
 
 <p align="center">
-  <strong>A real-time public chatroom built using ExpressJS, Node.js, WebSockets & Vanilla JS.</strong>
+  <strong>A real-time public chatroom built using ExpressJS, Node.js, WebSockets & JavaScript.</strong>
 </p>
 
 <p align="center">
@@ -16,35 +16,56 @@
 
 ## 🚀 Overview
 
-This project is a **real-time WebSocket-based public chat application**.  
+This project is a **real-time WebSocket-based public chat application** built using:
+
+🔥 Node.js
+⚡ ExpressJS
+🛰 Socket.IO
+🎨 HTML + CSS + JavaScript.  
+
+**Flow** -
 Users enter their name → socket connects → instantly join a shared public chat room.
 
-Perfect as a beginner-friendly real-time app + deployment practice.
+This app lets users instantly join a public chat room, type messages, see join/leave updates, and view real-time online user count.
 
 ---
 
-## 📸 Screenshots (Replace with your images)
+## 🚀 Live Demo
 
+🔗 [Click here to view the deployed Public Chat Room project](https://public-chat-app-s4m5.onrender.com/)
+
+
+## 📸 Screenshots 
+
+- Desktop Screen 
 ### 🔹 Home – Enter Username  
 ![Home Page](./screenshots/home.png)
 
 ### 🔹 Public Chat  
 ![Chat Page](./screenshots/chat.png)
+![Typing Page](./screenshots/chat2.png)
 
-*(Create a folder `/screenshots` and add your images)*
+
+- Mobile Screen
+
+### 🔹 Home – Enter Username  
+![Home Page](./screenshots/mobile-home.png)
+
+### 🔹 Public Chat  
+![Chat Page](./screenshots/mobile-chat.png)
+![Typing Page](./screenshots/mobile-chat2.png)
 
 ---
 
 ## ✨ Features
 
 - ⚡ Real-time messaging using WebSockets  
+- 🔔 Shows when someone joins or leaves
+- ✔ “You joined” and “System” messages
 - 👥 Shows **online users count**  
-- 🚀 No frameworks on frontend — 100% Vanilla JS  
-- 🔔 Join & Leave notifications  
-- 🎨 Clean UI (HTML + CSS)  
+- 🎨 Clean UI (mobile-friendly)
 - 📡 Auto-scroll chat  
-- 💬 Shows your own name in your window  
-- 🔧 Simple codebase for learning WebSockets  
+- 💬 Shows your own name in your window   
 - ❤️ Built with love by **Prakash**
 
 ---
@@ -54,7 +75,7 @@ Perfect as a beginner-friendly real-time app + deployment practice.
 ### **Frontend**
 - HTML  
 - CSS  
-- JavaScript (Vanilla)
+- JavaScript
 
 ### **Backend**
 - Node.js  
