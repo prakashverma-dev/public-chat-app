@@ -1,94 +1,121 @@
+<h1 align="center">🌐 Public Chat App</h1>
 
-# 🚀 Public Chat App (Express + Socket.IO)
+<p align="center">
+  <strong>A real-time public chatroom built using ExpressJS, Node.js, WebSockets & Vanilla JS.</strong>
+</p>
 
-A simple, fast, real-time public chat application built using:
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Active-brightgreen" />
+  <img src="https://img.shields.io/badge/Node.js-18+-green" />
+  <img src="https://img.shields.io/badge/ExpressJS-%5E4.18-blue" />
+  <img src="https://img.shields.io/badge/WebSockets-Real--Time-orange" />
+  <img src="https://img.shields.io/badge/Built%20With-Love%20♥-ff69b4" />
+</p>
 
-- Node.js
+---
 
-- ExpressJS
+## 🚀 Overview
 
-- Socket.IO
+This project is a **real-time WebSocket-based public chat application**.  
+Users enter their name → socket connects → instantly join a shared public chat room.
 
-- HTML, CSS, JavaScript
+Perfect as a beginner-friendly real-time app + deployment practice.
 
-Includes username login, join/leave notifications, online user count, and full real-time messaging.
+---
+
+## 📸 Screenshots (Replace with your images)
+
+### 🔹 Home – Enter Username  
+![Home Page](./screenshots/home.png)
+
+### 🔹 Public Chat  
+![Chat Page](./screenshots/chat.png)
+
+*(Create a folder `/screenshots` and add your images)*
+
+---
+
+## ✨ Features
+
+- ⚡ Real-time messaging using WebSockets  
+- 👥 Shows **online users count**  
+- 🚀 No frameworks on frontend — 100% Vanilla JS  
+- 🔔 Join & Leave notifications  
+- 🎨 Clean UI (HTML + CSS)  
+- 📡 Auto-scroll chat  
+- 💬 Shows your own name in your window  
+- 🔧 Simple codebase for learning WebSockets  
+- ❤️ Built with love by **Prakash**
+
+---
+
+## 🛠️ Tech Stack
+
+### **Frontend**
+- HTML  
+- CSS  
+- JavaScript (Vanilla)
+
+### **Backend**
+- Node.js  
+- Express.js  
+- WS (WebSocket Library)
+
+---
 
 ## 📂 Project Structure
 
 ```
+
 public-chat-app/
 │
 ├── public/
-│   ├── index.html       → Username entry page
-│   ├── chat.html        → Main chat UI
-│   ├── style.css        → Chat styling
-│   └── script.js        → Frontend logic
+│ ├── index.html
+│ ├── chat.html
+│ ├── styles.css
+│ └── script.js
 │
-├── server.js            → Express + Socket.IO backend
+├── server.js
 ├── package.json
-├── .gitignore
 └── README.md
 
 ```
 
-## 🛠 Installation & Setup (Local)
+
+---
+
+## ⚙️ Installation
+
+### 1️⃣ Clone the Repository
+```bash
 git clone https://github.com/prakashverma-dev/public-chat-app.git
 cd public-chat-app
+```
+
+### 2️⃣ Install Dependencies
+```
 npm install
+```
+### 2️⃣ Set upEnvironment Variables 
+
+- create .env file in the main root folder and add these variables
+     #### PORT = 5000
+
+### 3️⃣ Start Local Server   
+```
 npm start
+```
 
+## 🤝 Contributing 
 
+Pull requests are welcome.
+For major changes, please open an issue first to discuss what you’d like to change.
 
-## ✨ Features
+## 📜 License
 
-✔ Enter username before joining
-✔ Shows “User joined” / “User left”
-✔ Automatically updates online user count
-✔ Realtime messaging with Socket.IO
-✔ Clean, simple UI
-✔ Production-ready
-✔ Auto-deploy supported (Render / Railway)
+MIT License
 
-## 🚀 Deployed to Render - 
+## 
 
-#### LIVE PROJECT : https://public-chat-app.onrender.com
+<h3 align="center">✨ Built with love by Prakash ❤️</h3> 
 
-Open it in the browser—your chat app is live!
-
-
-## 🧩 Technologies Used
-Layer	Tech
-Backend	Node.js, ExpressJS
-Realtime	Socket.IO
-Frontend	HTML, CSS, JavaScript
-Deployment	Render / Railway
-
-## 💡 How It Works
-
-User enters name → stored in localStorage
-
-Client connects to server via Socket.IO
-
-Client emits "new-user"
-
-Server:
-
-Adds user
-
-Broadcasts "user joined"
-
-Updates online count
-
-Messages flow through "send-message" events
-
-On disconnect:
-
-Removes user
-
-Broadcasts "user left"
-
-Updates online count
-
-📜 License
-
-MIT — free for personal & commercial use.
