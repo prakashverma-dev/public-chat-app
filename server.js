@@ -47,9 +47,8 @@ io.on("connection", (socket)=>{
         users.push(username); 
       } 
 
-        console.log(`a new user ${username} connected, userId : ${socket.id}`)
+        // console.log(`a new user ${username} connected, userId : ${socket.id}`)
         
-
      
         socket.broadcast.emit("system", `${username} joined the chat`); 
 
